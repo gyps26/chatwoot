@@ -47,7 +47,7 @@ services:
       - SMTP_ADDRESS=smtp.zoho.com
       - SMTP_PORT=587
       - SMTP_USERNAME=team@gokortex.com
-      - SMTP_PASSWORD=Fegurogyp$on2024
+      - SMTP_PASSWORD=Fegurogyp$$on2024
       - SMTP_DOMAIN=gokortex.com
       - SMTP_AUTHENTICATION=login
       - SMTP_ENABLE_STARTTLS_AUTO=true
@@ -81,7 +81,7 @@ services:
       - SMTP_ADDRESS=smtp.zoho.com
       - SMTP_PORT=587
       - SMTP_USERNAME=team@gokortex.com
-      - SMTP_PASSWORD=Fegurogyp$on2024
+      - SMTP_PASSWORD=Fegurogyp$$on2024
       - SMTP_DOMAIN=gokortex.com
       - SMTP_AUTHENTICATION=login
       - SMTP_ENABLE_STARTTLS_AUTO=true
