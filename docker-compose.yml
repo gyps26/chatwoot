@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ch@twoot_pr0d_p@ss_2024!
       POSTGRES_DB: chatwoot_production
     volumes:
       - chatwoot_db_data:/var/lib/postgresql/data
@@ -35,19 +35,19 @@ services:
     environment:
       - RAILS_ENV=production
       - NODE_ENV=production
-      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - SECRET_KEY_BASE=44b6c23310a593ea77bd7a491247b5f3def20991c0e4a1186c2e93b4191f2a1e31eff00cf847ed2a488f7109f290ce58d957424bc94e56526e4eabf1c163576e
       - FRONTEND_URL=https://chat.gokortex.com
       - POSTGRES_DATABASE=chatwoot_production
       - POSTGRES_HOST=db
       - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=ch@twoot_pr0d_p@ss_2024!
       - REDIS_URL=redis://redis:6379/0
       - ACTIVE_STORAGE_SERVICE=local
       - INSTALLATION_PRICING_PLAN=enterprise
       - SMTP_ADDRESS=smtp.zoho.com
       - SMTP_PORT=587
       - SMTP_USERNAME=team@gokortex.com
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_PASSWORD=Fegurogyp$on2024
       - SMTP_DOMAIN=gokortex.com
       - SMTP_AUTHENTICATION=login
       - SMTP_ENABLE_STARTTLS_AUTO=true
@@ -69,19 +69,19 @@ services:
     environment:
       - RAILS_ENV=production
       - NODE_ENV=production
-      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - SECRET_KEY_BASE=44b6c23310a593ea77bd7a491247b5f3def20991c0e4a1186c2e93b4191f2a1e31eff00cf847ed2a488f7109f290ce58d957424bc94e56526e4eabf1c163576e
       - FRONTEND_URL=https://chat.gokortex.com
       - POSTGRES_DATABASE=chatwoot_production
       - POSTGRES_HOST=db
       - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=ch@twoot_pr0d_p@ss_2024!
       - REDIS_URL=redis://redis:6379/0
       - ACTIVE_STORAGE_SERVICE=local
       - INSTALLATION_PRICING_PLAN=enterprise
       - SMTP_ADDRESS=smtp.zoho.com
       - SMTP_PORT=587
       - SMTP_USERNAME=team@gokortex.com
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_PASSWORD=Fegurogyp$on2024
       - SMTP_DOMAIN=gokortex.com
       - SMTP_AUTHENTICATION=login
       - SMTP_ENABLE_STARTTLS_AUTO=true
