@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  db:
+    image: pgvector/pgvector:pg15
+    container_name: chatwoot-db-local
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: my_local_secure_password_123
+      POSTGRES_DB: chatwoot_production
+    volumes:
+      - chatwoot_db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: chatwoot-redis-local
+    restart: always
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - chatwoot_redis_data:/data
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        RAILS_ENV: production
+    container_name: chatwoot-web-local
+    restart: always
+    depends_on:
+      - db
+      - redis
+    command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      - "dev.orbstack.domains=chatwoot.local"
+      - "dev.orbstack.http-port=3000"
+    environment:
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=localproductionsecretkeyparitystring64characterslongvalue12345678
+      - FRONTEND_URL=https://chatwoot.local
+      - POSTGRES_DATABASE=chatwoot_production
+      - POSTGRES_HOST=db
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=my_local_secure_password_123
+      - REDIS_URL=redis://redis:6379/0
+      - ACTIVE_STORAGE_SERVICE=local
+      - INSTALLATION_PRICING_PLAN=enterprise
+    volumes:
+      - chatwoot_storage:/app/storage
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        RAILS_ENV: production
+    container_name: chatwoot-worker-local
+    restart: always
+    depends_on:
+      - db
+      - redis
+    command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+    environment:
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=localproductionsecretkeyparitystring64characterslongvalue12345678
+      - FRONTEND_URL=https://chatwoot.local
+      - POSTGRES_DATABASE=chatwoot_production
+      - POSTGRES_HOST=db
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=my_local_secure_password_123
+      - REDIS_URL=redis://redis:6379/0
+      - ACTIVE_STORAGE_SERVICE=local
+      - INSTALLATION_PRICING_PLAN=enterprise
+    volumes:
+      - chatwoot_storage:/app/storage
+
+volumes:
+  chatwoot_db_data:
+  chatwoot_redis_data:
+  chatwoot_storage:
