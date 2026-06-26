@@ -21,11 +21,7 @@ services:
       - chatwoot_redis_data:/data
 
   web:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-      args:
-        RAILS_ENV: production
+    image: gypson1234/chatwoot-ee:latest
     container_name: chatwoot-web-local
     restart: always
     depends_on:
@@ -56,11 +52,7 @@ services:
       - chatwoot_storage:/app/storage
 
   worker:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-      args:
-        RAILS_ENV: production
+    image: gypson1234/chatwoot-ee:latest
     container_name: chatwoot-worker-local
     restart: always
     depends_on:
