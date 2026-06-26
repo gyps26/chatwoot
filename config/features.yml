@@ -169,7 +169,7 @@
   enabled: false
 - name: channel_voice
   display_name: Voice Channel
-  enabled: false
+  enabled: true
   premium: true
 - name: notion_integration
   display_name: Notion Integration
